@@ -64,7 +64,7 @@ Function.prototype.myBind=function(obj,args){
 }
 //use apply polifil
 
-// printName.myBind(name,["kolkata","wb","Ind"])
+printName.myBind(name,["kolkata","wb","Ind"])
 
 const arr=[1,2,3,4]
 
@@ -106,4 +106,23 @@ Array.prototype.myFilter=function(callback){
 
 const filter_22=arr.myFilter(item=>item !==2)
 console.log(filter_22)
+
+//////////////////////////////////reduce polifil////////////////////////////////////
+
+const sum=arr.reduce((acc,item)=>acc+item,0)
+console.log(sum)
+
+//reduce polifil method
+
+Array.prototype.myReduce=function(callback,initial){
+    const startIndex= initial == undefined ? 1:0
+    let accumulator =initial == undefined ? this[0] : initial;
+    for(let i=startIndex;i<this.length;i++){
+        accumulator=callback(accumulator,this[i],i,this)
+    }
+    return accumulator
+}
+
+const sum2=arr.myReduce((acc,item)=>acc+item,0)
+console.log(sum2)
 
