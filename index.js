@@ -8,8 +8,9 @@ const name={
 function printName(town,state,country){
     console.log(`${this.name}-${this.age}-${town}-${state}-${country}`)
 }
-
+/////////////////////////////////bind polifil////////////////////////////////////
 //inbuild bind method call
+
 const printMyName=printName.bind(name,"kolkata","wb")
 printMyName("India")
 
@@ -23,7 +24,26 @@ Function.prototype.myBind=function(...args){
         fn.apply(obj,[...parameters,...args2])
     }
 }
-//call polifil
+//Use bind polifil
+
 const printMyName2=printName.myBind(name,"kolkata","wb")
 printMyName2("India")
+
+//////////////////////////////////call polifil////////////////////////////////////
+
+//inbuild call
+
+printName.call(name,"kolkata","wb","Ind")
+
+//call polifil method
+
+Function.prototype.myCall=function(obj,...args){
+    obj.__tempFn__=this
+    const result=obj.__tempFn__(...args)
+    delete obj.__tempFn__
+    return result
+}
+
+//use call polifil
+printName.myCall(name,"kolkata","wb","Ind")
 
