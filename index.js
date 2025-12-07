@@ -87,3 +87,23 @@ Array.prototype.myMap=function(callback){
 const double2=arr.myMap(item=>item*2)
 console.log(double2)
 
+//////////////////////////////////filter polifil////////////////////////////////////
+
+const filter_2=arr.filter(item=>item==2)
+console.log(filter_2)
+
+//filter polifil method
+Array.prototype.myFilter=function(callback){
+    const result=[]
+    const size=this.length
+    for(let i=0;i<size;i++){
+        if(callback(this[i],i,this)){
+            result.push(this[i])
+        }
+    }
+    return result
+}
+
+const filter_22=arr.myFilter(item=>item !==2)
+console.log(filter_22)
+
