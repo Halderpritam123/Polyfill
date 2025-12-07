@@ -45,5 +45,23 @@ Function.prototype.myCall=function(obj,...args){
 }
 
 //use call polifil
+
 printName.myCall(name,"kolkata","wb","Ind")
 
+//////////////////////////////////apply polifil////////////////////////////////////
+
+//inbuild apply
+
+printName.apply(name,["kolkata","wb","Ind"])
+
+//apply polifil method
+
+Function.prototype.myBind=function(obj,args){
+    obj.__tempFn__=this
+    const result=obj.__tempFn__(...args)
+    delete obj.__tempFn__
+    return result
+}
+//use apply polifil
+
+printName.myBind(name,["kolkata","wb","Ind"])
