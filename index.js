@@ -64,4 +64,26 @@ Function.prototype.myBind=function(obj,args){
 }
 //use apply polifil
 
-printName.myBind(name,["kolkata","wb","Ind"])
+// printName.myBind(name,["kolkata","wb","Ind"])
+
+const arr=[1,2,3,4]
+
+//////////////////////////////////map polifil////////////////////////////////////
+
+const double=arr.map(item=>item*2)
+console.log(double)
+
+//map polifil method
+
+Array.prototype.myMap=function(callback){
+    const result=[]
+    const size=this.length
+    for(let i=0;i<size;i++){
+        result[i]=callback(this[i],i,this)
+    }
+    return result
+}
+
+const double2=arr.myMap(item=>item*2)
+console.log(double2)
+
